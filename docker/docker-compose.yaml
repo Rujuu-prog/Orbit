@@ -1,0 +1,25 @@
+# 開発時のみ使用
+version: '3.8'
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ./docker/api/local/Dockerfile
+    # ホットリロードのためマウント
+    volumes:
+      - ../src:/home/app/src
+      - ../target:/home/app/target
+      - ../.env:/home/app/.env
+    ports:
+      - "8081:8081"
+    command: mvn spring-boot:run
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: todo
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
