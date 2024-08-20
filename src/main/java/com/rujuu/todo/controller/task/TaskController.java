@@ -8,7 +8,6 @@ import com.rujuu.todo.model.TaskListDTO;
 import com.rujuu.todo.service.task.TaskEntity;
 import com.rujuu.todo.service.task.TaskService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,7 +53,7 @@ public class TaskController implements TasksApi {
 
     @Override
     public ResponseEntity<TaskDTO> createTask(TaskForm taskForm) {
-        var entity = taskService.create(taskForm.getTitle());
+        var entity = taskService.create(taskForm.getTitle(), taskForm.getStatus());
 
         var dto = toTaskDTO(entity);
         return ResponseEntity.created(URI.create("/tasks/" + dto.getId())).body(dto);

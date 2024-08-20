@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Mapper
 public interface TaskRepository {
-    @Select("SELECT id, title FROM tasks WHERE id = #{taskId}::UUID LIMIT 1")
+    @Select("SELECT id, title, status FROM tasks WHERE id = #{taskId}::UUID LIMIT 1")
     Optional<TaskRecord> select(UUID taskId);
 
     @Options(useGeneratedKeys = true, keyProperty = "id")

@@ -249,6 +249,10 @@ components:
           description: "作成されるタスクのタイトル"
           maxLength: 256
           minLength: 1
+        status:
+          type: string
+          enum: ["inProgress", "done"]
+          description: "タスクのステータス"
       required:
         - title
     TaskDTO:
@@ -261,6 +265,10 @@ components:
         title:
           type: string
           description: "タスクのタイトル"
+        status:
+          type: string
+          enum: ["inProgress", "done"]
+          description: "タスクのステータス"
       required:
         - id
         - title
