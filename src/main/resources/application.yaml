@@ -15,7 +15,8 @@ spring:
     show-sql: true
   sql:
     init:
-      mode: always
+      # FIXME: alwaysにすると、Enumの存在判定が難しいため一旦neverにしている。Flywayなどを検討。
+      mode: never
       schema-locations: classpath:/sql/schema.sql
 #      初期化したくないため無効
 #      data-locations: classpath:/sql/data.sql
