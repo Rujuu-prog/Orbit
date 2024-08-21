@@ -39,7 +39,7 @@ paths:
                   token:
                     type: string
                     description: "発行されたJWTトークン"
-  /tasks/:
+  /tasks:
     get:
       summary: "タスク一覧取得"
       description: "タスクの一覧を取得できます"
